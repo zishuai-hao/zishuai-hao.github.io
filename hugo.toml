@@ -3,6 +3,38 @@ languageCode = 'en-us'
 title = "Zs's Blog"
 theme = 'hugo-theme-stack'
 
+# 设置默认内容语言
+DefaultContentLanguage = 'zh-cn'
+
+# 如果默认内容语言是中文、日语或韩语，设置为true
+hasCJKLanguage = true
+
+[params]
+    mainSections = ['post']
+    featuredImageField = 'image'
+    rssFullContent = true
+    
+    # 侧边栏设置
+    [params.sidebar]
+        emoji = "🍥"
+        subtitle = "个人博客"
+        
+    # 页面底部设置
+    [params.footer]
+        since = 2023
+        customText = ""
+    
+    # 文章页面设置
+    [params.article]
+        math = false
+        toc = true
+        readingTime = true
+        
+    # 小组件设置
+    [params.widgets]
+        homepage = ["recent-posts", "categories", "tag-cloud"]
+        page = ["toc"]
+
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
