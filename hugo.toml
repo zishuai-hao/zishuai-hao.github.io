@@ -2,6 +2,7 @@ baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = "Zs's Blog"
 theme = 'hugo-theme-stack'
+copyright = "Zishuai Hao"
 
 # 设置默认内容语言
 DefaultContentLanguage = 'zh-cn'
@@ -13,6 +14,12 @@ hasCJKLanguage = true
     mainSections = ['post']
     featuredImageField = 'image'
     rssFullContent = true
+    favicon = "" # 如果有favicon，请设置为 "/favicon.ico"（前面的斜杠是必需的）
+    
+    # 日期格式设置
+    [params.dateFormat]
+        published = "2006-01-02"
+        lastUpdated = "2006-01-02 15:04 MST"
     
     # 侧边栏设置
     [params.sidebar]
@@ -32,9 +39,60 @@ hasCJKLanguage = true
         
     # 小组件设置
     [params.widgets]
-        homepage = ["recent-posts", "categories", "tag-cloud"]
-        page = ["toc"]
+        homepage = [
+            { type = "search" },
+            { type = "archives", params = { limit = 5 } },
+            { type = "categories", params = { limit = 10 } },
+            { type = "tag-cloud", params = { limit = 10 } }
+        ]
+        page = [
+            { type = "toc" }
+        ]
 
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+# 颜色方案设置
+[params.colorScheme]
+    # 显示切换按钮
+    toggle = true
+    # 可选值: auto, light, dark
+    default = "auto"
+
+# 图像处理设置
+[params.imageProcessing]
+    [params.imageProcessing.cover]
+        enabled = true
+    [params.imageProcessing.content]
+        enabled = true
+
+# 相关文章设置
+[related]
+    includeNewer = true
+    threshold = 60
+    toLower = false
+    [[related.indices]]
+        name = "tags"
+        weight = 100
+    [[related.indices]]
+        name = "categories"
+        weight = 200
+
+# Markdown渲染设置
+[markup]
+    [markup.goldmark]
+        [markup.goldmark.renderer]
+            ## 如果在Markdown中有HTML内容，设置为true
+            unsafe = true
+    [markup.tableOfContents]
+        endLevel = 4
+        ordered = true
+        startLevel = 2
+    [markup.highlight]
+        noClasses = false
+        codeFences = true
+        guessSyntax = true
+        lineNos = true
+        lineNumbersInTable = true
+        tabWidth = 4
