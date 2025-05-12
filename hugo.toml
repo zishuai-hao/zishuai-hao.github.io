@@ -1,7 +1,7 @@
 baseURL = 'https://example.org/'
 languageCode = 'en-us'
 title = "Zs's Blog"
-theme = 'ananke'
+theme = 'Stack'
 
 [caches]
   [caches.images]
